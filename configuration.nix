@@ -9,7 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -115,6 +114,7 @@
     rofi-wayland
     dunst # notification
     libnotify # notification
+    (import ./modules/emacs.nix { inherit pkgs; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
