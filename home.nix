@@ -32,4 +32,8 @@
     enable = true;
     # settings = {};
   };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
