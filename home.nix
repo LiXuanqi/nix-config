@@ -12,6 +12,11 @@
     recursive = true;
   };
 
+  home.file.".config/doom" = {
+    source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/.config/doom;
+    recursive = true;
+  };
+
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
   programs.git = {
