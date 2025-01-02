@@ -1,0 +1,3 @@
+[submodule "dotfiles/.config/emacs"]
+	path = dotfiles/.config/emacs
+	url = https://github.com/doomemacs/doomemacs
