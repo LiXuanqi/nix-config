@@ -12,6 +12,11 @@
     recursive = true;
   };
 
+  home.file.".config/emacs" = {
+    source = ./dotfiles/.config/emacs;
+    recursive = true;
+  };
+
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
   programs.git = {
