@@ -162,8 +162,9 @@
   };
     programs.hyprland.enable = true; # enable Hyprland
 
-    fonts.packages = [
-      pkgs.nerd-fonts.jetbrains-mono
+    fonts.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      font-awesome
     ];
 
     programs.zsh.enable = true;
