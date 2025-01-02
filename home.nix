@@ -3,6 +3,10 @@
   home.homeDirectory = "/home/lixuanqi";
   home.stateVersion = "24.11";
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   home.file.".config" = {
     source = ./dotfiles/.config;
     recursive = true;
