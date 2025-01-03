@@ -32,6 +32,10 @@
   };
   programs.zsh = {
     enable = true;
+    shellAliases = {
+      "nx cd" = "cd ~/dev/nix-config";
+      "nx b" = "sudo nixos-rebuild switch --flake .#nixos";
+    };
     # enableCompletion = true;
     # autosuggestion.enable = true;
     # syntaxHighlighting.enable = true;
