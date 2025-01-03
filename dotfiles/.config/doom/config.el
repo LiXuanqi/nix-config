@@ -74,3 +74,21 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+
+(defvar xq/doom-config-dir "~/dev/nix-config/dotfiles/.config/doom/"
+  "The path to doom config directory")
+
+;;;###autoload
+(defun xq/open-doom-config ()
+  "Browse your `doom-user-dir'."
+  (interactive)
+  ;; (unless (file-directory-p doom-user-dir)
+  (unless (file-directory-p xq/doom-config-dir)
+    (user-error "$DOOMDIR doesn't exist (%s)" (abbreviate-file-name doom-user-dir)))
+  (doom-project-browse xq/doom-config-dir))
+
+(map! :leader
+      :desc "open doom config"
+      "f P" #'xq/open-doom-config)
