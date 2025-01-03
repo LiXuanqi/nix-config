@@ -7,7 +7,7 @@
     EDITOR = "nvim";
   };
 
-  home.sessionPath = ["\${xdg.configHome}/emacs/bin/"];
+  home.sessionPath = ["$HOME/.config/emacs/bin"];
 
   home.file.".config" = {
     source = ./dotfiles/.config;
