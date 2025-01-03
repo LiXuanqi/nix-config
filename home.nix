@@ -7,6 +7,8 @@
     EDITOR = "nvim";
   };
 
+  home.sessionPath = ["\${xdg.configHome}/emacs/bin/"];
+
   home.file.".config" = {
     source = ./dotfiles/.config;
     recursive = true;
