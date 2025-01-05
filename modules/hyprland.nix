@@ -36,6 +36,9 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+    ];
     settings = {
       env = [
         "XCURSOR_SIZE, 24"
