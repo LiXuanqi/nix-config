@@ -180,6 +180,8 @@
           "${MAIN_MODE}, C, killactive"
           "${MAIN_MODE}, M, exit"
           "${MAIN_MODE}, SPACE, exec, ${APP_LAUNCHER}"
+          "${MAIN_MODE}, V, togglefloating"
+          "${MAIN_MODE}, J, togglesplit"
         ];
       bindm = [
       ];
