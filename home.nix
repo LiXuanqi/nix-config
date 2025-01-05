@@ -1,4 +1,7 @@
 { config, pkgs, ...}: {
+  imports = [
+    ./modules/hyprland.nix
+  ];
   home.username = "lixuanqi";
   home.homeDirectory = "/home/lixuanqi";
   home.stateVersion = "24.11";
