@@ -180,8 +180,25 @@
           "${MAIN_MODE}, C, killactive"
           "${MAIN_MODE}, M, exit"
           "${MAIN_MODE}, SPACE, exec, ${APP_LAUNCHER}"
+          # window manage
           "${MAIN_MODE}, V, togglefloating"
           "${MAIN_MODE}, J, togglesplit"
+
+          # Move focus with mainMod + arrow keys
+          "${MAIN_MODE}, left, movefocus, l"
+          "${MAIN_MODE}, right, movefocus, r"
+          "${MAIN_MODE}, up, movefocus, u"
+          "${MAIN_MODE}, down, movefocus, d"
+          # Switch workspaces with mainMod + [0-9]
+          "${MAIN_MODE}, 1, workspace, 1"
+          "${MAIN_MODE}, 2, workspace, 2"
+          "${MAIN_MODE}, 3, workspace, 3"
+          "${MAIN_MODE}, 4, workspace, 4"
+          "${MAIN_MODE}, 5, workspace, 5"
+          "${MAIN_MODE}, 6, workspace, 6"
+          # Move/resize windows with mainMod + LMB/RMB and dragging
+          ''${MAIN_MODE}, mouse:272, movewindow''
+          ''${MAIN_MODE}, mouse:273, resizewindow''
         ];
       bindm = [
       ];
