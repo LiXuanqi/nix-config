@@ -196,11 +196,13 @@
           "${MAIN_MODE}, 4, workspace, 4"
           "${MAIN_MODE}, 5, workspace, 5"
           "${MAIN_MODE}, 6, workspace, 6"
+        ];
+      bindm = let
+            MAIN_MODE = "SUPER";
+        in [
           # Move/resize windows with mainMod + LMB/RMB and dragging
           ''${MAIN_MODE}, mouse:272, movewindow''
           ''${MAIN_MODE}, mouse:273, resizewindow''
-        ];
-      bindm = [
       ];
       bindl = [
       ];
