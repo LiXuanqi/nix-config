@@ -23,7 +23,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.lixuanqi = import ./home.nix;
+            home-manager.users.lixuanqi = import ./home.nix {inherit inputs;};
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
