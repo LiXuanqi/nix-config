@@ -115,6 +115,7 @@
     dunst # notification
     libnotify # notification
     (import ./modules/emacs.nix { inherit pkgs; })
+    code-cursor
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
