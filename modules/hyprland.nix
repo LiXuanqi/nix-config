@@ -47,7 +47,7 @@
       ];
       monitor = [
         ",preferred,auto,1"
-        ",addreserved,35,0,0,0"
+        ",addreserved,30,0,0,0"
       ];
       "exec-once" = [
         "waybar"
@@ -63,8 +63,8 @@
         # "hyprctl setcursor Bibata-Modern-Classic 24"
       ];
       general = {
-        gaps_in = 4;
-        gaps_out = 5;
+        gaps_in = 2;
+        gaps_out = 2;
         gaps_workspaces = 50;
         border_size = 1;
         layout = "dwindle";
@@ -237,7 +237,7 @@
       plugin = {
         hyprbars = {
           bar_color = "rgb(2a2a2a)";
-          bar_height = 28;
+          bar_height = 25;
           col_text = "rgba(ffffffdd)";
           bar_text_size = 11;
           bar_text_font = "Ubuntu Nerd Font";
