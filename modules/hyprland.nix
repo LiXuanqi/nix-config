@@ -45,7 +45,10 @@
         "XCURSOR_SIZE, 24"
         "HYPRCURSOR_SIZE, 24"
       ];
-      monitor = [ ",preferred,auto,1" ];
+      monitor = [
+        ",preferred,auto,1"
+        ",addreserved,35,0,0,0"
+      ];
       "exec-once" = [
         "waybar"
         "dunst"
@@ -68,6 +71,7 @@
         resize_on_border = true;
         "col.active_border" = "rgba(471868FF)";
         "col.inactive_border" = "rgba(4f4256CC)";
+        "no_border_on_floating" = false;
       };
       dwindle = {
         preserve_split = true;
@@ -238,7 +242,9 @@
           bar_text_size = 11;
           bar_text_font = "Ubuntu Nerd Font";
           
-          # buttons
+          # Disable hyprbars for floating windows if you prefer
+          disable_floating = true;
+          
           buttons = {
             button_size = 11;
             "col.maximize" = "rgba(ffffff11)";
