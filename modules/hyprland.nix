@@ -38,7 +38,7 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
     ];
     settings = {
       env = [
@@ -230,6 +230,22 @@
       source = [
         # "./colors.conf"
       ];
+      plugin = {
+        hyprbars = {
+          bar_color = "rgb(2a2a2a)";
+          bar_height = 28;
+          col_text = "rgba(ffffffdd)";
+          bar_text_size = 11;
+          bar_text_font = "Ubuntu Nerd Font";
+          
+          # buttons
+          buttons = {
+            button_size = 11;
+            "col.maximize" = "rgba(ffffff11)";
+            "col.close" = "rgba(ff111133)";
+          };
+        };
+      };
     };
   };
 }
