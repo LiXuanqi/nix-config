@@ -50,7 +50,7 @@
         # ",addreserved,35,0,0,0"
       ];
       "exec-once" = [
-        "waybar"
+        # "waybar"
         "dunst"
         "fcitx5"
         # "ags"

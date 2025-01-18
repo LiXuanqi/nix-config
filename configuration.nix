@@ -110,7 +110,7 @@
   #  wget
 
     # kitty # required for the default Hyprland config
-    waybar
+    # waybar
     rofi-wayland
     dunst # notification
     libnotify # notification
