@@ -1,6 +1,7 @@
-{ config, pkgs, ...}: {
+{ inputs, config, pkgs, ...}: {
   imports = [
     ./modules/hyprland.nix
+    inputs.ags.homeManagerModules.default
   ];
   home.username = "lixuanqi";
   home.homeDirectory = "/home/lixuanqi";
@@ -53,5 +54,10 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+  programs.ags = {
+    enable = true;
+    configDir = null;
+    extraPackages = with pkgs; [];
   };
 }

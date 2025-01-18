@@ -10,6 +10,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    ags.url = "github:aylur/ags";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, hyprland, ... }: {
