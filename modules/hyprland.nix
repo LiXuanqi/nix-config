@@ -47,7 +47,7 @@
       ];
       monitor = [
         ",preferred,auto,1"
-        ",addreserved,35,0,0,0"
+        # ",addreserved,35,0,0,0"
       ];
       "exec-once" = [
         "waybar"
