@@ -53,7 +53,7 @@
         # "waybar"
         "dunst"
         "fcitx5"
-        # "ags"
+        "ags run"
         # "swww kill; swww init"
         # ''
         #   swayidle -w timeout 300 'swaylock -f' timeout 450 'pidof java || systemctl suspend' before-sleep 'swaylock -f'
