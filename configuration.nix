@@ -111,6 +111,7 @@
 
     # kitty # required for the default Hyprland config
     # waybar
+    nodejs
     rofi-wayland
     dunst # notification
     libnotify # notification
