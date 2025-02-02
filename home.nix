@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, ...}: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./modules/hyprland.nix
     inputs.ags.homeManagerModules.default
@@ -11,7 +17,7 @@
     EDITOR = "nvim";
   };
 
-  home.sessionPath = ["$HOME/.config/emacs/bin"];
+  home.sessionPath = [ "$HOME/.config/emacs/bin" ];
 
   home.file.".config" = {
     source = ./dotfiles/.config;
@@ -25,36 +31,6 @@
 
   programs.home-manager.enable = true;
   programs.neovim.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "1_x7";
-    userEmail = "lixuanqi1995@gmail.com";
-  };
-  programs.wezterm = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      "nxcd" = "cd ~/dev/nix-config";
-      "nxb" = "sudo nixos-rebuild switch --flake .#nixos";
-    };
-    # enableCompletion = true;
-    # autosuggestion.enable = true;
-    # syntaxHighlighting.enable = true;
-    # history.size = 10000;
-    # history.ignoreAllDups = true;
-    # history.path = "$HOME/.zsh_history";
-  };
-  programs.starship = {
-    enable = true;
-    # settings = {};
-  };
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   programs.ags = {
     enable = true;
     configDir = null;

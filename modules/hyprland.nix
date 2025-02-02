@@ -87,7 +87,9 @@
         workspace_swipe_direction_lock_threshold = 10;
         workspace_swipe_create_new = true;
       };
-      binds = { scroll_event_delay = 0; };
+      binds = {
+        scroll_event_delay = 0;
+      };
       input = {
         # Keyboard: Add a layout and uncomment kb_options for Win+Space switching shortcut
         kb_layout = "us";
@@ -180,10 +182,12 @@
         # damage_blink = true;
       };
       bind =
-        let SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
-            MAIN_MODE = "SUPER";
-            APP_LAUNCHER = "rofi -show drun -show-icons";
-        in [
+        let
+          SLURP_COMMAND = "$(slurp -d -c eedcf5BB -b 4f425644 -s 00000000)";
+          MAIN_MODE = "SUPER";
+          APP_LAUNCHER = "rofi -show drun -show-icons";
+        in
+        [
           "${MAIN_MODE}, Q, exec, wezterm"
           "${MAIN_MODE}, C, killactive"
           "${MAIN_MODE}, M, exit"
@@ -205,13 +209,15 @@
           "${MAIN_MODE}, 5, workspace, 5"
           "${MAIN_MODE}, 6, workspace, 6"
         ];
-      bindm = let
-            MAIN_MODE = "SUPER";
-        in [
+      bindm =
+        let
+          MAIN_MODE = "SUPER";
+        in
+        [
           # Move/resize windows with mainMod + LMB/RMB and dragging
           ''${MAIN_MODE}, mouse:272, movewindow''
           ''${MAIN_MODE}, mouse:273, resizewindow''
-      ];
+        ];
 
       bindel = [
         ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
@@ -223,12 +229,12 @@
       ];
       bindr = [
       ];
-      bindir = [];
+      bindir = [ ];
       binde = [
       ];
       windowrule = [
       ];
-      windowrulev2 = [];
+      windowrulev2 = [ ];
       layerrule = [
       ];
       source = [
@@ -241,10 +247,10 @@
           col_text = "rgba(ffffffdd)";
           bar_text_size = 11;
           bar_text_font = "Ubuntu Nerd Font";
-          
+
           # Disable hyprbars for floating windows if you prefer
           disable_floating = true;
-          
+
           buttons = {
             button_size = 11;
             "col.maximize" = "rgba(ffffff11)";

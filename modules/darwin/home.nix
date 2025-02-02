@@ -1,8 +1,14 @@
-{config, pkgs, lib, home-manager, ...}:
-let 
-user = "lixuanqi";
-# sharedFiles = import ../shared/files.nix { inherit config pkgs; };
+{
+  config,
+  pkgs,
+  lib,
+  home-manager,
+  ...
+}:
+let
+  user = "lixuanqi";
 in
+# sharedFiles = import ../shared/files.nix { inherit config pkgs; };
 {
   users.users.${user} = {
     name = "${user}";
@@ -13,23 +19,30 @@ in
 
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ...}: {
-      home = {
-        stateVersion = "24.11";
-        packages = pkgs.callPackage ./packages.nix {};
-        # file = lib.mkMerge [
-        #   sharedFiles
-        # ];
-	# This doesn't work on mac
-	sessionPath = ["$HOME/.config/emacs/bin"];
-	file = {
-	  ".config/doom" = {
-	    source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/.config/doom;
-	    recursive = true;
-	  };
-	}; 
+    users.${user} =
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }:
+      {
+        home = {
+          stateVersion = "24.11";
+          packages = pkgs.callPackage ./packages.nix { };
+          # file = lib.mkMerge [
+          #   sharedFiles
+          # ];
+          # This doesn't work on mac
+          sessionPath = [ "$HOME/.config/emacs/bin" ];
+          file = {
+            ".config" = {
+              source = ../../dotfiles/.config;
+              recursive = true;
+            };
+          };
+        };
+        programs = { } // import ../shared/programs.nix { inherit config pkgs lib; };
       };
-      programs = {} // import ../shared/programs.nix {inherit config pkgs lib;};
-    };
   };
 }

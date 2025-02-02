@@ -13,40 +13,55 @@
       inputs.hyprland.follows = "hyprland";
     };
     ags.url = "github:aylur/ags";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, hyprland, ... }: {
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      hyprland,
+      fenix,
+      ...
+    }:
+    {
+      packages.x86_64-linux.default = fenix.packages.x86_64-linux.minimal.toolchain;
+      packages.aarch64-darwin.default = fenix.packages.aarch64-darwin.minimal.toolchain;
 
-    darwinConfigurations."1x7s-Laptop" = 
-    nix-darwin.lib.darwinSystem {
-	specialArgs = inputs;
-	modules = [
-	  home-manager.darwinModules.home-manager
-         ./hosts/darwin
-	];
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+
+      darwinConfigurations."1x7s-Laptop" = nix-darwin.lib.darwinSystem {
+        specialArgs = inputs;
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./hosts/darwin
+        ];
       };
 
-
-    # nixosConfigurations = {
-    #   # nixos is host name
-    #   nixos = nixpkgs.lib.nixosSystem rec {
-    #     system = "x86_64-linux";
-    #     specialArgs = {inherit inputs;};
-    #     modules = [
-    #       ./configuration.nix
-    #       home-manager.nixosModules.home-manager
-    #       {
-    #
-    #         home-manager.extraSpecialArgs = specialArgs;
-    #         home-manager.useGlobalPkgs = true;
-    #         home-manager.useUserPackages = true;
-    #         home-manager.users.lixuanqi = import ./home.nix;
-    #
-    #         # Optionally, use home-manager.extraSpecialArgs to pass
-    #         # arguments to home.nix
-    #       }
-    #     ];
-    #   };
-    # };
-  };
+      # nixosConfigurations = {
+      #   # nixos is host name
+      #   nixos = nixpkgs.lib.nixosSystem rec {
+      #     system = "x86_64-linux";
+      #     specialArgs = {inherit inputs;};
+      #     modules = [
+      #       ./configuration.nix
+      #       home-manager.nixosModules.home-manager
+      #       {
+      #
+      #         home-manager.extraSpecialArgs = specialArgs;
+      #         home-manager.useGlobalPkgs = true;
+      #         home-manager.useUserPackages = true;
+      #         home-manager.users.lixuanqi = import ./home.nix;
+      #
+      #         # Optionally, use home-manager.extraSpecialArgs to pass
+      #         # arguments to home.nix
+      #       }
+      #     ];
+      #   };
+      # };
+    };
 }
