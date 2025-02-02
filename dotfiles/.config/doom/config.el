@@ -74,7 +74,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(set-frame-font "JetBrainsMono Nerd Font 11" nil t)
+(set-frame-font "JetBrainsMono Nerd Font 13" nil t)
 
 (defvar xq/doom-config-dir "~/dev/nix-config/dotfiles/.config/doom/"
   "The path to doom config directory")

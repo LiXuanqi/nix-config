@@ -21,7 +21,7 @@
 
   git = {
     enable = true;
-    userName = "1_x7";
+    userName = "LiXuanqi";
     userEmail = "lixuanqi1995@gmail.com";
   };
 

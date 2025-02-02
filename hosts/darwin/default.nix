@@ -47,4 +47,9 @@
     ]
     ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
+  # TODO: move to a shared file
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    font-awesome
+  ];
 }
