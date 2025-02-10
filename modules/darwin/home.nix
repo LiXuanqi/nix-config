@@ -33,6 +33,9 @@ in
           # file = lib.mkMerge [
           #   sharedFiles
           # ];
+          sessionVariables = {
+              EDITOR = "nvim";
+          }; 
           # This doesn't work on mac
           sessionPath = [ "$HOME/.config/emacs/bin" ];
           file = {
