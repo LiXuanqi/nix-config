@@ -17,6 +17,7 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlays.url = "github:nix-community/emacs-overlay";
   };
 
   outputs =
@@ -26,6 +27,7 @@
       nix-darwin,
       hyprland,
       fenix,
+      emacs-overlay,
       ...
     }:
     {

@@ -4,6 +4,7 @@
   nixpkgs,
   pkgs,
   fenix,
+  emacs-overlay,
   ...
 }:
 {
