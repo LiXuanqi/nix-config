@@ -60,8 +60,11 @@ pkgs ? import <nixpkgs> { },
       # This can also include extra executables to be run by Emacs (linters,
       # language servers, formatters, etc)
       extraEmacsPackages = epkgs: [
-        epkgs.cask
-        pkgs.shellcheck
+        epkgs.treesit-grammars.with-all-grammars
+        pkgs.typescript-language-server
+        # required by typescript-language-server
+        pkgs.typescript
+        pkgs.nodePackages.prettier
       ];
 
       # Optionally override derivations.
