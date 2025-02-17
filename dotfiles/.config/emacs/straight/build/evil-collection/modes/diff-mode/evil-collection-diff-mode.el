@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/evil-collection/modes/diff-mode/evil-collection-diff-mode.el

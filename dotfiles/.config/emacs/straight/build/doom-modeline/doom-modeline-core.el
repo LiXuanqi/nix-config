@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/doom-modeline/doom-modeline-core.el

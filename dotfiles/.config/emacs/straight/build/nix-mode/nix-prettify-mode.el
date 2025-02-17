@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/nix-mode/nix-prettify-mode.el

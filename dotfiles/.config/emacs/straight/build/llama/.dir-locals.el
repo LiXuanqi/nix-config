@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/llama/.dir-locals.el

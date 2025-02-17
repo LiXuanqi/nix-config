@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/evil-collection/modes/man/evil-collection-man.el

@@ -1,57 +1,73 @@
 ;;; init.el -*- lexical-binding: t -*-
 
-(setq inhibit-startup-message t)
+;;(defvar xq/default-font "JetBrainsMono Nerd Font")
+ ;; (defvar efs/default-font-size 180)
 
- (set-frame-font "JetBrainsMono Nerd Font 13" nil t)
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
 
-(scroll-bar-mode -1)        ; Disable visible scrollbar
-(tool-bar-mode -1)          ; Disable the toolbar
-(tooltip-mode -1)           ; Disable tooltips
-(set-fringe-mode 10)        ; Give some breathing room
+(defun xq/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                     (time-subtract after-init-time before-init-time)))
+           gcs-done))
 
-(menu-bar-mode -1)            ; Disable the menu bar
+(add-hook 'emacs-startup-hook #'xq/display-startup-time)
 
-(global-display-line-numbers-mode t)
-;; Disable line numbers for some modes
-(dolist (mode '(term-mode-hook)) (add-hook mode (lambda () (display-line-numbers-mode 0))))
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Set up the visible bell
-(setq visible-bell t)
+(setq package-enable-at-startup nil)
+
+  (straight-use-package 'use-package)
+
+(defun xq/open-emacs-config ()
+  (interactive)
+  (find-file "~/.config/emacs/config.org"))
+
+(use-package general
+  :straight t
+  :config
+  (general-create-definer rune/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (rune/leader-keys
+    "t"  '(:ignore t :which-key "toggles")
+    "tt" '(counsel-load-theme :which-key "choose theme")
+    "s" '(:ignore t :which-key "switch")
+    "sb" '(consult-buffer :which-key "switch buffer")
+    "w"  '(:ignore t :which-key "window")
+    "w-" '(evil-window-split :which-key "Split window -")
+    "w|" '(evil-window-vsplit :which-key "Split window |")
+    "wj" '(evil-window-down :which-key "Move to down window")
+    "wk" '(evil-window-up :which-key "Move to up window")
+    "wh" '(evil-window-left :which-key "Move to left window")
+    "wl" '(evil-window-right :which-key "Move to right window")
+    "f"  '(:ignore t :which-key "files")
+    "fp" '(xq/open-emacs-config :which-key "open emacs config")))
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 1))
 
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  )
-
-(use-package doom-themes
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-one t)
-
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-;; ================== EVIL ================
 (use-package evil
+  :straight t
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
@@ -59,7 +75,6 @@
   (setq evil-want-C-i-jump nil)
   :config
   (evil-mode 1)
-  (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
@@ -71,70 +86,167 @@
   (evil-set-initial-state 'dashboard-mode 'normal))
 
 (use-package evil-collection
+  :straight t
   :after evil
   :config
   (evil-collection-init))
 
-(evil-set-undo-system 'undo-redo)
+(setq inhibit-startup-message t) ; No welcome messsage
 
-;; ================== Vertico ================
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode)
-  :custom
-  (vertico-cycle t)
+      (scroll-bar-mode -1)        ; Disable visible scrollbar
+      (tool-bar-mode -1)          ; Disable the toolbar
+      (tooltip-mode -1)           ; Disable tooltips
+      (set-fringe-mode 10)        ; Give some breathing room
+      (menu-bar-mode -1)            ; Disable the menu bar
+      ;; Set up the visible bell
+      ;; (setq visible-bell t)
+
+
+  ;; (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;;(set-face-attribute 'default nil :font xq/default-font :height xq/default-font-size)
+
+;; Set the fixed pitch face
+;;(set-face-attribute 'fixed-pitch nil :font xq/default-font :height xq/default-font-size)
+
+;; Set the variable pitch face
+;;(set-face-attribute 'variable-pitch nil :font "Cantarell" :height efs/default-variable-font-size :weight 'regular)
+
+(column-number-mode)
+  (global-display-line-numbers-mode t)
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(use-package doom-themes
+    :straight t
+    :init (load-theme 'doom-one t))
+
+(use-package doom-modeline
+  :straight t
+  :init (doom-modeline-mode 1)
   )
 
-(use-package savehist
-  :init
-  (savehist-mode)
-)
+(use-package which-key
+  :straight t
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
 
-(use-package marginalia
-  :after vertico
-  :ensure t
+(use-package rainbow-delimiters
+  :straight t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+;; ================== Vertico ================
+  (use-package vertico
+    :straight t
+    :init
+    (vertico-mode)
+    :custom
+    (vertico-cycle t)
+    )
+
+  (use-package savehist
+    :straight t
+    :init
+    (savehist-mode)
+  )
+
+  (use-package marginalia
+    :straight t
+    :after vertico
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :init
+    (marginalia-mode))
+
+
+  ;; TODO: config consult
+  (use-package consult
+    :straight t)
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+
+  :straight t
   :custom
-  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
-  :init
-  (marginalia-mode))
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
+  ;; (orderless-component-separator #'orderless-escapable-split-on-space)
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
+  ;; embark, 
 
-;; TODO: config consult
-(use-package consult)
+  ;; ================== Completion ================
+  (use-package corfu
+    :straight t
+    ;; Optional customizations
+    :custom
+    (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
+    (corfu-auto t)                 ;; Enable auto completion
+    (corfu-auto-prefix 2)          ;; Complete with minimum 2 characters
+    (corfu-auto-delay 0.0)         ;; No delay for completion
+    (corfu-echo-documentation 0.25) ;; Show documentation for selected candidate
 
-;; embark, orderless
+    ;; Enable Corfu only for certain modes
+    ;; :hook ((prog-mode . corfu-mode)
+    ;;       (shell-mode . corfu-mode)
+    ;;       (eshell-mode . corfu-mode))
 
-;; ================== Completion ================
-(use-package corfu
-  :ensure t
-  ;; Optional customizations
+    ;; Recommended: Enable Corfu globally.
+    ;; This is recommended since Dabbrev can be used globally (M-/).
+    :init
+    (global-corfu-mode))
+
+  ;; cape, kind-icon
+
+(use-package copilot
+:straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(with-eval-after-load 'org
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python")))
+
+(use-package org-bullets
+  :straight t
+  :after org
+  :hook (org-mode . org-bullets-mode)
   :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto-prefix 2)          ;; Complete with minimum 2 characters
-  (corfu-auto-delay 0.0)         ;; No delay for completion
-  (corfu-echo-documentation 0.25) ;; Show documentation for selected candidate
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-  ;; Enable Corfu only for certain modes
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;       (shell-mode . corfu-mode)
-  ;;       (eshell-mode . corfu-mode))
+(defun xq/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
 
-  ;; Recommended: Enable Corfu globally.
-  ;; This is recommended since Dabbrev can be used globally (M-/).
-  :init
-  (global-corfu-mode))
+(use-package visual-fill-column
+  :straight t
+  :hook (org-mode . xq/org-mode-visual-fill))
 
-;; cape, kind-icon
+(setq-default indent-tabs-mode nil)
 
+(use-package evil-commentary
+  :straight t)
+(evil-commentary-mode)
 
-;; ================== LSP ================
 (defun xq/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
 
 (use-package lsp-mode
+  :straight t
   :commands (lsp lsp-deferred)
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (rust-ts-mode . lsp-deferred)
@@ -146,9 +258,7 @@
   :config
   (lsp-enable-which-key-integration t))
 
-;; ================== Treesitter ================
-
- (use-package treesit
+(use-package treesit
       :mode (("\\.tsx\\'" . tsx-ts-mode)
              )
       :preface
@@ -182,42 +292,29 @@
             (treesit-install-language-grammar (car grammar)))))
 
       :config
-      (xq/setup-install-grammars)) 
+      (xq/setup-install-grammars))
 
-
-;; ================== Linter ================
-    (use-package flycheck
-      :ensure t
-      :init (global-flycheck-mode)
-      :bind (:map flycheck-mode-map
-                  ("M-n" . flycheck-next-error) ; optional but recommended error navigation
-                  ("M-p" . flycheck-previous-error)))
-
-
-;; ================== Formatter ================
 (use-package apheleia
-  :ensure t
+  :straight t
   :config
-  (apheleia-global-mode +1)
-  
-  ;; Configure formatters
-  (setq apheleia-formatters
-        '((prettier . ("prettier" "--stdin-filepath" filepath))
-          (nixfmt . ("nixfmt"))
-          (rustfmt . ("rustfmt" "--edition" "2021"))
-          ))
+  (apheleia-global-mode +1))
 
-  ;; Associate modes with formatters
-  (setq apheleia-mode-alist
-        '((typescript-mode . prettier)
-          (typescript-ts-mode . prettier)
-          (tsx-ts-mode . prettier)
-          (javascript-mode . prettier)
-          (js-mode . prettier)
-          (web-mode . prettier)
-          (css-mode . prettier)
-          (json-mode . prettier)
-          (nix-mode . nixfmt)
-          (rust-mode . rustfmt)
-          (python-mode . black)
-          (sh-mode . shfmt))))
+(use-package flycheck
+  :straight t
+  :init (global-flycheck-mode)
+  :bind (:map flycheck-mode-map
+              ("M-n" . flycheck-next-error) ; optional but recommended error navigation
+              ("M-p" . flycheck-previous-error)))
+
+(use-package nix-mode
+  :straight t
+  :mode "\\.nix\\'")
+
+(use-package typescript-ts-mode
+  ;; :straight t
+  :mode
+  ("\\.tsx?\\'")
+  :hook
+  (typescript-ts-mode . lsp-deferred)
+  :custom
+  (typescript-ts-mode-indent-offset 4))

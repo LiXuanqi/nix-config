@@ -7,8 +7,8 @@
 }:
 let
   user = "lixuanqi";
+  # sharedFiles = import ../shared/files.nix { inherit config pkgs; };
 in
-# sharedFiles = import ../shared/files.nix { inherit config pkgs; };
 {
   users.users.${user} = {
     name = "${user}";
@@ -38,9 +38,19 @@ in
           }; 
           # This doesn't work on mac
           sessionPath = [ "$HOME/.config/emacs/bin" ];
+          # file = {
+          #   ".config" = {
+          #     source = ../../dotfiles/.config;
+          #     recursive = true;
+          #   };
+          # };
           file = {
             ".config" = {
               source = ../../dotfiles/.config;
+              recursive = true;
+            };
+            ".config/emacs" = {
+              source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
               recursive = true;
             };
           };

@@ -6,6 +6,9 @@ with pkgs;
   (import ./emacs.nix { inherit pkgs; })
 
   nodejs
+  # typescript-language-server
+  # typescript
+  # nodePackages.prettier
 
   # gnumake
   # cmake

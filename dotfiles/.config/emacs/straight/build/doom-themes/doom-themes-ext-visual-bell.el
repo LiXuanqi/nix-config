@@ -1,0 +1,1 @@
+/Users/lixuanqi/.config/emacs/straight/repos/themes/extensions/doom-themes-ext-visual-bell.el

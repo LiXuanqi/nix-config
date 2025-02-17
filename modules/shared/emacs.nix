@@ -2,17 +2,19 @@
 #  pkgs ? import <nixpkgs> { },
 # }:
 # let
-#   myEmacs = pkgs.emacs;
+#   myEmacs = pkgs.emacs-git;
 #   emacsWithPackages = (pkgs.emacsPackagesFor myEmacs).emacsWithPackages;
 # in
 # emacsWithPackages (
 #   epkgs: with epkgs; [
 #    treesit-grammars.with-all-grammars
+#          # epkgs.nerd-icons
 #  ]
 # )
 
 {
 pkgs ? import <nixpkgs> { },
+  ...
 }:
 
     (pkgs.emacsWithPackagesFromUsePackage {
@@ -22,7 +24,8 @@ pkgs ? import <nixpkgs> { },
       #     they're being parsed in nix, which lacks unicode
       #     support.
       # config = ./emacs.org;
-      config = ../../dotfiles/.config/emacs/init.el;
+      # config = ../../dotfiles/.config/emacs/init.el;
+      config = "./empty.el";
 
       # Whether to include your config as a default init file.
       # If being bool, the value of config is used.
@@ -33,7 +36,7 @@ pkgs ? import <nixpkgs> { },
       #     src = ./emacs.el;
       #     inherit (config.xdg) configHome dataHome;
       #   };
-      defaultInitFile = true;
+      defaultInitFile = false;
 
       # Package is optional, defaults to pkgs.emacs
       package = pkgs.emacs-git;
@@ -45,7 +48,7 @@ pkgs ? import <nixpkgs> { },
       # `:ensure nil` or `:disabled`.
       # Note that this is NOT recommended unless you've actually set
       # `use-package-always-ensure` to `t` in your config.
-      alwaysEnsure = true;
+      # alwaysEnsure = true;
 
       # For Org mode babel files, by default only code blocks with
       # `:tangle yes` are considered. Setting `alwaysTangle` to `true`
@@ -54,7 +57,7 @@ pkgs ? import <nixpkgs> { },
       # Note that this is NOT recommended unless you have something like
       # `#+PROPERTY: header-args:emacs-lisp :tangle yes` in your config,
       # which defaults `:tangle` to `yes`.
-      alwaysTangle = true;
+      #alwaysTangle = true;
 
       # Optionally provide extra packages not in the configuration file.
       # This can also include extra executables to be run by Emacs (linters,
@@ -65,6 +68,7 @@ pkgs ? import <nixpkgs> { },
         # required by typescript-language-server
         pkgs.typescript
         pkgs.nodePackages.prettier
+        # epkgs.nerd-icons
       ];
 
       # Optionally override derivations.
