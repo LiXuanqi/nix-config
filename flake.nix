@@ -37,7 +37,7 @@
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
 
       darwinConfigurations."1x7s-Laptop" = nix-darwin.lib.darwinSystem {
-        specialArgs = inputs;
+        specialArgs = {inherit inputs;};
         modules = [
           home-manager.darwinModules.home-manager
           ./hosts/darwin

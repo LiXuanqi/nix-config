@@ -1,10 +1,8 @@
 {
-  self,
+  inputs,
   config,
   nixpkgs,
   pkgs,
-  fenix,
-  emacs-overlay,
   lib,
   ...
 }:

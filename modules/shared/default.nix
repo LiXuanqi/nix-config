@@ -2,8 +2,6 @@
   inputs,
   config,
   pkgs,
-  fenix,
-  emacs-overlay,
   ...
 }:
 {
