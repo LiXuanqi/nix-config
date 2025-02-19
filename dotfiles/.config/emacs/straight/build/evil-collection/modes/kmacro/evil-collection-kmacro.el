@@ -1,1 +1,0 @@
-/Users/lixuanqi/.config/emacs/straight/repos/evil-collection/modes/kmacro/evil-collection-kmacro.el

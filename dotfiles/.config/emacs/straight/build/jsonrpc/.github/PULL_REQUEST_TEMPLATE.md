@@ -1,1 +1,0 @@
-/Users/lixuanqi/.config/emacs/straight/repos/jsonrpc/.github/PULL_REQUEST_TEMPLATE.md

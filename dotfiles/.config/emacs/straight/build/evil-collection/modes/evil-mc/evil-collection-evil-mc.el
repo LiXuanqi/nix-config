@@ -1,1 +1,0 @@
-/Users/lixuanqi/.config/emacs/straight/repos/evil-collection/modes/evil-mc/evil-collection-evil-mc.el

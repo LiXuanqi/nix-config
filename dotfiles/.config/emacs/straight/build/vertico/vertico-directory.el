@@ -1,1 +1,0 @@
-/Users/lixuanqi/.config/emacs/straight/repos/vertico/extensions/vertico-directory.el
