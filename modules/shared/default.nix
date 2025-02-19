@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   fenix,
@@ -8,8 +9,8 @@
 {
 
   nixpkgs = {
-    overlays = [ fenix.overlays.default 
-      emacs-overlay.overlay
+    overlays = [ inputs.fenix.overlays.default 
+      inputs.emacs-overlay.overlay
     ];
     config = {
       allowUnfree = true;

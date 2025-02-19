@@ -6,6 +6,8 @@
   inputs,
   config,
   pkgs,
+  fenix,
+  emacs-overlay,
   ...
 }:
 
@@ -13,6 +15,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/shared
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -123,7 +126,7 @@
     rofi-wayland
     dunst # notification
     libnotify # notification
-    (import ./modules/emacs.nix { inherit pkgs; })
+    # (import ../../modules/shared/emacs.nix { inherit pkgs; })
     code-cursor
   ];
 

@@ -44,26 +44,24 @@
         ];
       };
 
-      # nixosConfigurations = {
-      #   # nixos is host name
-      #   nixos = nixpkgs.lib.nixosSystem rec {
-      #     system = "x86_64-linux";
-      #     specialArgs = {inherit inputs;};
-      #     modules = [
-      #       ./configuration.nix
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #
-      #         home-manager.extraSpecialArgs = specialArgs;
-      #         home-manager.useGlobalPkgs = true;
-      #         home-manager.useUserPackages = true;
-      #         home-manager.users.lixuanqi = import ./home.nix;
-      #
-      #         # Optionally, use home-manager.extraSpecialArgs to pass
-      #         # arguments to home.nix
-      #       }
-      #     ];
-      #   };
-      # };
+      nixosConfigurations = {
+        # nixos is host name
+        nixos = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./hosts/nixos
+            home-manager.nixosModules.home-manager
+            {
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.lixuanqi = import ./modules/nixos/home.nix;
+            }
+          ];
+        };
+      };
     };
 }
