@@ -1,5 +1,13 @@
 { config, ... }:
 {
+    ".config" = {
+        source = ../../dotfiles/.config;
+        recursive = true;
+    };
+    ".config/emacs" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
+        recursive = true;
+    };
   # TODO: This file is not in used
 
   # ".config/doom" = {
@@ -11,8 +19,8 @@
   #   recursive = true;
   # };
 
-  ".config/emacs" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
-    recursive = true;
-  };
+  # ".config/emacs" = {
+  #   source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
+  #   recursive = true;
+  # };
 }

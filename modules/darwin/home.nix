@@ -7,8 +7,8 @@
 }:
 let
   user = "lixuanqi";
-  # sharedFiles = import ../shared/files.nix { inherit config pkgs; };
 in
+# sharedFiles = import ../shared/files.nix { inherit config pkgs; };
 {
   users.users.${user} = {
     name = "${user}";
@@ -27,17 +27,20 @@ in
         ...
       }:
       {
+
+        imports = [
+          ../shared/home.nix
+        ];
+
         home = {
           stateVersion = "24.11";
           packages = pkgs.callPackage ./packages.nix { };
           # file = lib.mkMerge [
           #   sharedFiles
           # ];
-          sessionVariables = {
-              EDITOR = "nvim";
-          }; 
-          # This doesn't work on mac
-          sessionPath = [ "$HOME/.config/emacs/bin" ];
+          # sessionVariables = {
+          #   EDITOR = "nvim";
+          # };
           # file = {
           #   ".config" = {
           #     source = ../../dotfiles/.config;

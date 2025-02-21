@@ -111,9 +111,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =
@@ -193,4 +190,5 @@
 
   # Optional, hint Electron apps to use Wayland:
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.EDITOR = "nvim";
 }
