@@ -116,19 +116,21 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
+  environment.systemPackages =
+    with pkgs;
+    [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
 
-    # kitty # required for the default Hyprland config
-    # waybar
-    nodejs
-    rofi-wayland
-    dunst # notification
-    libnotify # notification
-    # (import ../../modules/shared/emacs.nix { inherit pkgs; })
-    code-cursor
-  ];
+      # kitty # required for the default Hyprland config
+      # waybar
+      rofi-wayland
+      dunst # notification
+      libnotify # notification
+      # (import ../../modules/shared/emacs.nix { inherit pkgs; })
+      code-cursor
+    ]
+    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
