@@ -9,6 +9,8 @@ with pkgs;
   # typescript-language-server
   # typescript
   # nodePackages.prettier
+  claude-code
+
 
   # gnumake
   # cmake
