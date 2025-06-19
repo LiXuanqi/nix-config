@@ -12,6 +12,7 @@ with pkgs;
   claude-code
   libgit2
   openssl
+  pkg-config
 
 
   # gnumake
