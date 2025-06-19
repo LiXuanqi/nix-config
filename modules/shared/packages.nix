@@ -11,6 +11,7 @@ with pkgs;
   # nodePackages.prettier
   claude-code
   libgit2
+  openssl
 
 
   # gnumake
