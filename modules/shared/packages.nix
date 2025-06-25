@@ -10,9 +10,6 @@ with pkgs;
   # typescript
   # nodePackages.prettier
   claude-code
-  libgit2
-  openssl
-  pkg-config
 
 
   # gnumake
