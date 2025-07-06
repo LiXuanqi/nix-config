@@ -48,18 +48,22 @@ in
           #   };
           # };
           file = {
-            ".config" = {
-              source = ../../dotfiles/.config;
+            ".config/wezterm" = {
+              source = ../../dotfiles/.config/wezterm;
               recursive = true;
             };
-            ".config/emacs" = {
-              source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
-              recursive = true;
-            };
-            "crafted-emacs" = {
-              source = ../../dotfiles/crafted-emacs;
-              recursive = true;
-            };
+            # ".config" = {
+            #   source = ../../dotfiles/.config;
+            #   recursive = true;
+            # };
+            # ".config/emacs" = {
+            #   source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
+            #   recursive = true;
+            # };
+            # "crafted-emacs" = {
+            #   source = ../../dotfiles/crafted-emacs;
+            #   recursive = true;
+            # };
           };
         };
         programs = { } // import ../shared/programs.nix { inherit config pkgs lib; };
