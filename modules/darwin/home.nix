@@ -56,6 +56,10 @@ in
               source = config.lib.file.mkOutOfStoreSymlink "/Users/lixuanqi/dev/nix-config/dotfiles/.config/emacs";
               recursive = true;
             };
+            "crafted-emacs" = {
+              source = ../../dotfiles/crafted-emacs;
+              recursive = true;
+            };
           };
         };
         programs = { } // import ../shared/programs.nix { inherit config pkgs lib; };
