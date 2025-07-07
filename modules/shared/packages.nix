@@ -10,6 +10,7 @@ with pkgs;
   # typescript
   # nodePackages.prettier
   claude-code
+  copilot-language-server
 
 
   # gnumake
