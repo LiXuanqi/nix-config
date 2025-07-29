@@ -12,6 +12,8 @@ with pkgs;
   claude-code
   copilot-language-server
 
+  python3
+  python3Packages.pip
 
   # gnumake
   # cmake
