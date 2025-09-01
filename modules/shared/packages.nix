@@ -6,6 +6,7 @@ with pkgs;
   (import ./emacs.nix { inherit pkgs; })
 
   nodejs
+  pnpm
   # typescript-language-server
   # typescript
   # nodePackages.prettier
