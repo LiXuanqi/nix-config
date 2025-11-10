@@ -61,6 +61,17 @@
     enableRosetta = true; # Required for Apple Silicon Macs
     user = "lixuanqi";
     autoMigrate = true; # Automatically migrate existing Homebrew installations
+    
+    # Optional: Declarative tap management
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    };
+
+    # Optional: Enable fully-declarative tap management
+    #
+    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+    mutableTaps = false;
   };
 
  # Path fix for GUI applications.

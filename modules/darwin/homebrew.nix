@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  # Optional: Align homebrew taps config with nix-homebrew
+  homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -25,13 +28,8 @@
       # Add casks here as needed
     ];
 
-    # Configure Homebrew taps
-    taps = [
-      "homebrew/cask"
-      "homebrew/cask-drivers" 
-      "homebrew/cask-fonts"
-      # Add custom taps as needed
-    ];
+    # Configure Homebrew taps (managed by nix-homebrew)
+    # taps are now managed declaratively via nix-homebrew.taps
 
     # Install Mac App Store applications
     masApps = {
