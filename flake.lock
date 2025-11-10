@@ -255,6 +255,22 @@
         "type": "github"
       }
     },
+    "homebrew-xgit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762739698,
+        "narHash": "sha256-a+awlHruFmjKIXjI+ylrV1IPuqC7zNbYjeGOhf/FwW4=",
+        "owner": "LiXuanqi",
+        "repo": "homebrew-xgit",
+        "rev": "03894b600639ae6d1334388bbbb3dfadfaaa870c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LiXuanqi",
+        "repo": "homebrew-xgit",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -727,6 +743,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-xgit": "homebrew-xgit",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "nix-darwin": "nix-darwin",

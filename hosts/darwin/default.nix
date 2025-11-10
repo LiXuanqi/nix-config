@@ -72,7 +72,8 @@
     # Optional: Enable fully-declarative tap management
     #
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-    mutableTaps = false;
+    # Temporarily set to true to allow permission fixes
+    mutableTaps = true;
   };
 
  # Path fix for GUI applications.
