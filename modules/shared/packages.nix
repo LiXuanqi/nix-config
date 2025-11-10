@@ -18,6 +18,9 @@ with pkgs;
   uv
   pyright
 
+  go
+  gopls
+
   # gnumake
   # cmake
   # libtool

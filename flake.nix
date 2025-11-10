@@ -18,6 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlays.url = "github:nix-community/emacs-overlay";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs =
@@ -28,6 +29,7 @@
       hyprland,
       fenix,
       emacs-overlay,
+      nix-homebrew,
       ...
     }:
     {

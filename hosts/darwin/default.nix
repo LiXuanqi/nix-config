@@ -10,7 +10,9 @@
 
   imports = [
     ../../modules/darwin/home.nix
+    ../../modules/darwin/homebrew.nix
     ../../modules/shared
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
 
   nix = {
@@ -52,6 +54,14 @@
     nerd-fonts.jetbrains-mono
     font-awesome
   ];
+
+  # Homebrew configuration
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true; # Required for Apple Silicon Macs
+    user = "lixuanqi";
+    autoMigrate = true; # Automatically migrate existing Homebrew installations
+  };
 
  # Path fix for GUI applications.
   # Update the launchd configuration to be more comprehensive
