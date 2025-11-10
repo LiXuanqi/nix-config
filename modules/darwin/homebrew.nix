@@ -20,7 +20,7 @@
     # Install packages from Homebrew that are either not available in nixpkgs
     # or better maintained upstream
     brews = [
-      # Add brew packages here as needed
+      "LiXuanqi/xgit/xgit"
     ];
 
     # Install GUI applications from Homebrew Cask

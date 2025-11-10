@@ -66,6 +66,7 @@
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "LiXuanqi/xgit" = "github:LiXuanqi/homebrew-xgit";
     };
 
     # Optional: Enable fully-declarative tap management
