@@ -27,6 +27,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-xgit = {
+      url = "github:LiXuanqi/homebrew-xgit";
+      flake = false;
+    };
   };
 
   outputs =
@@ -40,6 +44,7 @@
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
+      homebrew-xgit,
       ...
     }:
     {

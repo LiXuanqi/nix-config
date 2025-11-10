@@ -223,6 +223,38 @@
         "type": "github"
       }
     },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762740242,
+        "narHash": "sha256-MnGSuqW0/sJyue24v0g4tmGz4wRX9W3NnWT0gaaFm84=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "78d864b4db78208106fe8d87bf8d4e7e0ad2477f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762735311,
+        "narHash": "sha256-cDwSW9voXEVxLkVFGdqdeGcI3oHmKEsH+BAyWxL2hb8=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "781a5a9d18ef4f3eb8ce2fba28b8efb647464a82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -693,6 +725,8 @@
         "emacs-overlays": "emacs-overlays",
         "fenix": "fenix",
         "home-manager": "home-manager",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "nix-darwin": "nix-darwin",
