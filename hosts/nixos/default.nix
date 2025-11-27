@@ -180,10 +180,7 @@
     # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    font-awesome
-  ];
+  fonts.packages = import ../../modules/shared/packages/fonts.nix { inherit pkgs; };
 
   programs.zsh.enable = true;
   users.users.lixuanqi.shell = pkgs.zsh;

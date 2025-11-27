@@ -46,6 +46,18 @@ nix-collect-garbage -d
 sudo nix-collect-garbage -d  # system-wide on NixOS
 ```
 
+### Homebrew Management (macOS)
+```bash
+# Homebrew is managed declaratively via nix-homebrew
+# Packages and taps defined in modules/darwin/homebrew.nix
+# Custom taps (homebrew-xgit) defined as flake inputs
+
+# Manual Homebrew operations (if needed)
+brew update    # Update tap information
+brew upgrade   # Upgrade installed packages
+brew cleanup   # Remove old versions
+```
+
 ## Architecture Overview
 
 ### Core Structure
@@ -81,7 +93,10 @@ The configuration uses several key inputs:
 - `nix-darwin` - macOS system configuration
 - `hyprland` - Wayland compositor for NixOS
 - `fenix` - Rust toolchain management
-- Custom overlays for Emacs and other specialized packages
+- `nix-homebrew` - Declarative Homebrew management for macOS
+- `homebrew-core`, `homebrew-cask` - Standard Homebrew taps
+- `homebrew-xgit` - Custom tap for xgit package
+- `emacs-overlay` - Custom Emacs packages and configurations
 
 ### Host Configurations
 - **`1x7s-Laptop`** - macOS Darwin system
@@ -93,5 +108,12 @@ Application configurations in `dotfiles/.config/` are managed through Home Manag
 - `hypr/` - Hyprland window manager (NixOS)
 - `doom/` + `emacs/` - Editor configurations
 - `waybar/` - Status bar (NixOS)
+
+### Homebrew Integration (macOS)
+Homebrew is integrated declaratively via `nix-homebrew`:
+- **Configuration**: `modules/darwin/homebrew.nix` defines packages and settings
+- **Custom Taps**: Added as flake inputs for reproducibility (homebrew-xgit)
+- **Package Management**: Automatic cleanup, updates via darwin-rebuild
+- **Custom Packages**: `xgit` from custom tap for enhanced git workflows
 
 When modifying configurations, always test with the appropriate rebuild command before committing changes.
