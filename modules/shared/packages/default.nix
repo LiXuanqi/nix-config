@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   # Import all package categories
   development = {
@@ -8,7 +8,7 @@ let
     go = import ./development/go.nix { inherit pkgs; };
   };
   editors = import ./editors.nix { inherit pkgs; };
-  tools = import ./tools.nix { inherit pkgs; };
+  tools = import ./tools.nix { inherit pkgs inputs; };
 in
 # Combine all package lists
 tools

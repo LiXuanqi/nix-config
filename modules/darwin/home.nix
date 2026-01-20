@@ -3,6 +3,7 @@
   pkgs,
   lib,
   home-manager,
+  inputs,
   ...
 }:
 let
@@ -34,7 +35,7 @@ in
 
         home = {
           stateVersion = "24.11";
-          packages = pkgs.callPackage ./packages.nix { };
+          packages = pkgs.callPackage ./packages.nix { inherit inputs; };
           # file = lib.mkMerge [
           #   sharedFiles
           # ];

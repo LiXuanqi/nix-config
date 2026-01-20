@@ -47,7 +47,7 @@
     with pkgs;
     [
     ]
-    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+    ++ (import ../../modules/shared/packages.nix { inherit pkgs inputs; });
 
   fonts.packages = import ../../modules/shared/packages/fonts.nix { inherit pkgs; };
 

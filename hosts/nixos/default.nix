@@ -127,7 +127,7 @@
       # (import ../../modules/shared/emacs.nix { inherit pkgs; })
       code-cursor
     ]
-    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+    ++ (import ../../modules/shared/packages.nix { inherit pkgs inputs; });
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

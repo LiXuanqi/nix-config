@@ -31,6 +31,7 @@
       url = "github:LiXuanqi/homebrew-xgit";
       flake = false;
     };
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
   };
 
   outputs =
@@ -45,6 +46,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-xgit,
+      codex-cli-nix,
       ...
     }:
     {

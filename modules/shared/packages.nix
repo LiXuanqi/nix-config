@@ -1,3 +1,3 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 # Re-export from new modular structure
-import ./packages/default.nix { inherit pkgs; }
+import ./packages/default.nix { inherit pkgs inputs; }
