@@ -54,7 +54,7 @@
   # Homebrew configuration
   nix-homebrew = {
     enable = true;
-    enableRosetta = true; # Required for Apple Silicon Macs
+    enableRosetta = false;
     user = "lixuanqi";
     autoMigrate = true; # Automatically migrate existing Homebrew installations
     

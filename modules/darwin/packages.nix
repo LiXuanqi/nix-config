@@ -8,7 +8,7 @@ shared-packages
   # command line tool for managing dock items
   dockutil
   # web browser
-  arc-browser
+  # arc-browser
   # app launcher
   raycast
 ]
